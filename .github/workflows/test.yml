@@ -1,0 +1,27 @@
+name: Your Workflow Name
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+  push:
+    branches:
+      - main
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+
+    environment: development
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run Shell Script
+        run: |
+          echo "Hello ${{ secrets.SOME_VARIABLE }}!"
+          echo "Hello ${{ secrets.AWS_ACCESS_SECRET_KEY }}!"
+          env
+        shell: bash
