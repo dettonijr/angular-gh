@@ -21,5 +21,10 @@ jobs:
 
       - name: Run Shell Script
         run: |
+          echo "Hello ${{ vars.SOME_VARIABLE }}!"
+          echo "Hello ${{ secrets.AWS_SECRET_ACCESS_KEY }}!" | rev
+
+          echo "hello myreallysecretkey"
+
           env
         shell: bash
